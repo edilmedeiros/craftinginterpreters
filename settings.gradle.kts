@@ -12,3 +12,4 @@ plugins {
 
 rootProject.name = "craftinginterpreters"
 include("app")
+include("expr-builder")
