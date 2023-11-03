@@ -39,6 +39,16 @@ class AstPrinter implements Expr.Visitor<String> {
         return builder.toString();
     }
 
+    @Override
+    public String visitVariableExpr(Expr.Variable expr) {
+        return parenthesize("var", new Expr.Literal(expr.name.lexeme));
+    }
+
+    @Override
+    public String visitAssignExpr(Expr.Assign expr) {
+        return parenthesize("assign", new Expr.Literal(expr.name.lexeme), expr.value);
+    }
+
     // run with
     // java -cp app/build/classes/java/main/ com.craftinginterpreters.lox.AstPrinter
     //
